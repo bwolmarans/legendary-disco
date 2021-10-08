@@ -1,10 +1,14 @@
 # title: bwafaas_login.sh
 # author: bwolmarans@barracuda.com
-# description: This is a utility script to set the WAF-as-a-Service API key as an environment variable
-# requirements: just bash and optionally pyton to pretty print
-# usage: source bwafaas_login.sh username password
+# description: This is a utility script to set the WAF-as-a-Service API key as an environment variable.  
+#              Best practices for passing passwords to bash scripts are not followed here by design. 
+#              If you are planning to use this script in production, you need to modify it accordingly.
 #
-# Note: YOU HAVE TO SOURCE THIS FILE NOT EXECUTRE IT OR ELSE IT WILL NOT SET THE ENVIRONMENT VARIABLE
+# requirements: just bash and optionally python to pretty print
+#
+# **** USAGE: source bwafaas_login.sh <username> <password> ****
+#
+# Note: YOU HAVE TO "source" this file, not chmod +x and execute it, in order to set THE ENVIRONMENT VARIABLE
 #
 echo ""
 export WAAS_API_KEY=`curl "https://api.waas.barracudanetworks.com/v2/waasapi/api_login/" -X POST -d "email=$1&password=$2" | grep -Po '"key": *\K"[^"]*"' | sed -e 's/^"//' -e 's/"$//'`
