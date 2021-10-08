@@ -13,7 +13,7 @@ echo "Assuming you sourced this script, this script has set an environment varia
 echo ""
 echo WAAS_API_KEY=$WAAS_API_KEY
 echo ""
-echo "Example of using this to get the list of applicaitons on WAFaaS:"
+echo "Example of using this to get the list of applications on WAFaaS:"
 echo ""
 echo "curl \"https://api.waas.barracudanetworks.com/v2/waasapi/applications/\" -H \"accept: application/json\" -H \"Content-Type: application/json\" -H \"auth-api: \$WAAS_API_KEY\" | python -m json.tool"
 echo ""
